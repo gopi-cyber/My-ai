@@ -1,0 +1,235 @@
+/* ═══════════════════════════════════════════════════════════════
+   PENTAGI FLEET OBSERVABILITY
+   ═══════════════════════════════════════════════════════════════ */
+
+.pentagi-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 20px;
+}
+
+.pentagi-main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.pentagi-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 0 20px rgba(0, 255, 204, 0.05);
+  transform-style: preserve-3d;
+  transform: translateZ(20px) rotateX(calc(var(--rotate-x) * 0.1)) rotateY(calc(var(--rotate-y) * 0.1));
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.pentagi-panel:hover {
+  transform: translateZ(40px) rotateX(calc(var(--rotate-x) * 0.3)) rotateY(calc(var(--rotate-y) * 0.3));
+  border-color: rgba(0, 255, 204, 0.4);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(0, 255, 204, 0.1);
+}
+
+.pentagi-panel-title {
+  font-family: var(--font-technical);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pentagi-panel-title::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan);
+  border-radius: 50%;
+}
+
+/* ── Agents Grid ── */
+.pentagi-agents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.pentagi-agent-card {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.pentagi-agent-card:hover {
+  background: rgba(0, 255, 204, 0.05);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+}
+
+.agent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.agent-id {
+  font-family: var(--font-technical);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.agent-state-badge {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.05em;
+}
+
+.state-running .agent-state-badge { background: rgba(0, 255, 204, 0.2); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); }
+.state-idle .agent-state-badge { background: rgba(255, 255, 255, 0.1); color: var(--text-dim); border: 1px solid rgba(255, 255, 255, 0.2); }
+.state-paused .agent-state-badge { background: rgba(255, 170, 0, 0.2); color: #ffaa00; border: 1px solid #ffaa00; }
+.state-error .agent-state-badge { background: rgba(255, 0, 85, 0.2); color: var(--neon-magenta); border: 1px solid var(--neon-magenta); }
+
+.agent-name {
+  font-family: var(--font-header);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-bright);
+}
+
+.agent-role {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.agent-task {
+  font-family: var(--font-technical);
+  font-size: 11px;
+  color: var(--neon-cyan);
+  background: rgba(0, 255, 204, 0.05);
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+.agent-metrics {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.agent-metrics .metric {
+  font-family: var(--font-technical);
+  font-size: 10px;
+  color: var(--text-bright);
+}
+
+.agent-metrics .metric span {
+  color: var(--text-dim);
+}
+
+/* ── Task Tree ── */
+.pentagi-tree-container {
+  padding-left: 8px;
+}
+
+.pentagi-task-node {
+  display: flex;
+  flex-direction: column;
+}
+
+.pentagi-task-label {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-bright);
+}
+
+.task-icon {
+  font-weight: bold;
+  font-family: var(--font-technical);
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-completed { color: var(--text-dim); }
+.status-completed .task-icon { color: var(--neon-cyan); }
+.status-active { color: var(--neon-cyan); font-weight: 600; }
+.status-active .task-icon { color: var(--neon-cyan); animation: spin 2s linear infinite; }
+.status-pending { color: var(--text-dim); opacity: 0.6; }
+.status-failed { color: var(--neon-magenta); }
+.status-failed .task-icon { color: var(--neon-magenta); }
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.pentagi-task-children {
+  padding-left: 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  margin-left: 7px;
+}
+
+/* ── Console Telemetry ── */
+.console-panel {
+  flex: 1;
+  min-height: 200px;
+}
+
+.pentagi-console-output {
+  font-family: var(--font-technical);
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 255, 204, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
+
+.console-line {
+  line-height: 1.4;
+}
+
+.log-info { color: var(--text-dim); }
+.log-error { color: var(--neon-magenta); font-weight: 600; }
+
+.console-cursor {
+  color: var(--neon-cyan);
+  animation: blink 1s step-end infinite;
+  display: inline-block;
+}
+
+@keyframes blink { 50% { opacity: 0; } }

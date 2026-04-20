@@ -1,0 +1,222 @@
+/* ================================================================
+   AETHER PRIME DOCK — Floating Glassmorphism Navigation
+   2000% Production Supremacy — Cinematic Interaction Layer
+   ================================================================ */
+
+.aether-dock-container {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.aether-dock {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  animation: dock-appear 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s var(--ease-smooth);
+}
+
+@keyframes dock-appear {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━
+   DOCK ITEMS
+   ━━━━━━━━━━━━━━━━━━━━━━━ */
+.dock-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s var(--ease-smooth);
+  color: var(--text-tertiary);
+}
+
+.dock-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-4px);
+  color: var(--text-primary);
+}
+
+.dock-item.active {
+  background: rgba(139, 92, 246, 0.12);
+  color: #a78bfa; /* AETHER Violet */
+  transform: translateY(-6px);
+}
+
+.dock-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: transform 0.3s var(--ease-smooth);
+}
+
+.dock-item.active .dock-icon-wrap {
+  text-shadow: 0 0 15px rgba(167, 139, 250, 0.8);
+}
+
+.dock-label {
+  position: absolute;
+  top: -24px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  padding: 2px 8px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: all 0.2s var(--ease-smooth);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--glass-border);
+}
+
+.dock-item:hover .dock-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━
+   DIVIDERS & STATUS
+   ━━━━━━━━━━━━━━━━━━━━━━━ */
+.dock-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0 4px;
+}
+
+.dock-health-wrap {
+  display: flex;
+  padding: 0 6px;
+}
+
+.dock-health-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+}
+
+.dock-health-dot.online {
+  background: #34d399;
+  box-shadow: 0 0 10px #34d399;
+  animation: health-pulse 3s infinite;
+}
+
+.dock-health-dot.offline {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes health-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━
+   APP SWITCHER MENU
+   ━━━━━━━━━━━━━━━━━━━━━━━ */
+.aether-app-switcher {
+  pointer-events: auto;
+  width: 280px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: var(--shadow-xl);
+  margin-bottom: 8px;
+}
+
+.app-switcher-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.app-switcher-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 4px;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-smooth);
+  color: var(--text-secondary);
+}
+
+.app-switcher-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.app-switcher-item.active {
+  color: var(--accent-cyan);
+  background: rgba(34, 211, 238, 0.05);
+}
+
+.app-icon {
+  font-size: 18px;
+}
+
+.app-label {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━
+   ANIMATIONS
+   ━━━━━━━━━━━━━━━━━━━━━━━ */
+.animate-dock-slide {
+  animation: switcher-slide 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes switcher-slide {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━
+   RESPONSIVE OVERRIDES
+   ━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 480px) {
+  .aether-dock {
+    width: calc(100vw - 32px);
+    max-width: none;
+    justify-content: space-around;
+  }
+}

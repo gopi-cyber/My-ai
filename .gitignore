@@ -1,0 +1,42 @@
+# Root gitignore
+eng.traineddata
+node_modules/
+out/
+dist/
+
+# Jarvis subdirectory ignores
+jarvis/node_modules
+jarvis/out
+jarvis/dist
+jarvis/*.tgz
+jarvis/coverage
+jarvis/*.lcov
+jarvis/logs
+jarvis/_.log
+jarvis/.env
+jarvis/.env.development.local
+jarvis/.env.test.local
+jarvis/.env.production.local
+jarvis/.env.local
+jarvis/.eslintcache
+jarvis/.cache
+jarvis/*.tsbuildinfo
+jarvis/.idea
+jarvis/.DS_Store
+jarvis/*.db
+jarvis/*.db-journal
+jarvis/*.db-wal
+jarvis/*.db-shm
+jarvis/data/
+jarvis/ui/public/openwakeword/
+jarvis/ui/public/ort/
+jarvis/ui/dist/
+jarvis/sidecar/desktop-bridge/bin/
+jarvis/sidecar/desktop-bridge/obj/
+jarvis/eng.traineddata
+
+# Workspace ignores
+.gemini
+.antigravity
+*.log
+jarvis/scratch_migrate_keys.ts

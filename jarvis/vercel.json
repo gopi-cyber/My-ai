@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "public": true,
+  "name": "aether",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "http://localhost:3142/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "cleanUrls": true
+}

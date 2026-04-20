@@ -1,0 +1,210 @@
+.health-overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.health-overlay-window {
+  width: 100%;
+  max-width: 800px;
+  background: #0a0a0f;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 40px rgba(139, 92, 246, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.health-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.health-title {
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.health-pulse {
+  width: 10px;
+  height: 10px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulseDiagnostic 1.5s infinite;
+}
+
+@keyframes pulseDiagnostic {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.health-close {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.health-close:hover { color: white; }
+
+.health-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  padding: 24px;
+  gap: 24px;
+}
+
+.health-main h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.service-item {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 14px 18px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.service-msg {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+}
+
+.status-pill {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.status-pill.ok { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.status-pill.warning { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+.status-pill.error { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+.health-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.metric-box {
+  background: rgba(139, 92, 246, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.metric-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 4px;
+}
+
+.metric-value {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.security-mask-zone {
+  margin-top: auto;
+  padding: 16px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.security-mask-zone h4 {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.security-mask-zone p {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 12px;
+}
+
+.key-mask {
+  background: #000;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(139, 92, 246, 0.6);
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+
+.test-all-btn {
+  width: 100%;
+  background: #8b5cf6;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.test-all-btn:hover {
+  background: #7c3aed;
+  transform: translateY(-2px);
+}
+
+.health-footer {
+  padding: 16px 24px;
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 12px;
+}
